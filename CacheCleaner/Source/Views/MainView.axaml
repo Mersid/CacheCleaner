@@ -1,0 +1,32 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:CacheCleaner.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CacheCleaner.Views.MainView">
+    
+    <Design.DataContext>
+        <viewModels:MainViewViewModel/>
+    </Design.DataContext>
+    
+    <Grid ShowGridLines="False" ColumnDefinitions="*, *, *, *" RowDefinitions="*, *, *" Margin="0">
+        <DataGrid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="4" 
+                  AutoGenerateColumns="True" CanUserReorderColumns="True" CanUserResizeColumns="True" CanUserSortColumns="True" IsReadOnly="True"
+                  Items="{Binding Items}">
+            <DataGrid.Columns>
+                
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <StackPanel Grid.Row="2" Grid.Column="3" VerticalAlignment="Bottom">
+            <Button Command="{Binding Scan}" IsEnabled="{Binding ScanButtonEnabled}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <Label VerticalAlignment="Center" HorizontalAlignment="Center">Scan</Label>
+            </Button>
+            <Button Command="{Binding Delete}" IsEnabled="{Binding DeleteButtonEnabled}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <Label VerticalAlignment="Center" HorizontalAlignment="Center">Delete</Label>
+            </Button>
+        </StackPanel>
+            
+    </Grid>
+</UserControl>

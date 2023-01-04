@@ -1,0 +1,24 @@
+﻿[
+    {
+        "directory": "%temp%"
+    },
+    {
+        "directory": "%localappdata%/JetBrains/Toolbox/logs"
+    },
+    {
+        "directory": "%localappdata%/Steam"
+    },
+    {
+        "directory": "%localappdata%/Jetbrains",
+        "excludes": ["%localappdata%/Jetbrains/Toolbox"]
+    },
+    {
+        "directory": "%localappdata%/Adobe/CameraRaw/Cache2"
+    },
+    {
+        "directory": "%localappdata%/Adobe/Lightroom/Caches"
+    },
+    {
+        "directory": "%localappdata%/Adobe/InDesign"
+    }
+]
