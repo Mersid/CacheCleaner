@@ -1,10 +1,13 @@
-﻿<UserControl xmlns="https://github.com/avaloniaui"
+<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:CacheCleaner.ViewModels"
              xmlns:local="clr-namespace:CacheCleaner"
+             xmlns:models="clr-namespace:CacheCleaner.Models"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:CompileBindings="True"
+             x:DataType="viewModels:MainViewViewModel"
              x:Class="CacheCleaner.Views.MainView">
     
     <Design.DataContext>
@@ -28,11 +31,11 @@
                   DataContext="{Binding Items}"
                   Items="{Binding}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Path" Binding="{Binding Path}"/>
-                <DataGridTextColumn Header="Files" Binding="{Binding Files}" />
-                <DataGridTextColumn Header="Folders" Binding="{Binding Folders}" />
-                <DataGridTextColumn Header="Total" Binding="{Binding Total}" />
-                <DataGridTextColumn Header="Status" Binding="{Binding Status}" />
+                <DataGridTextColumn x:DataType="models:CleaningEntryModel" Header="Path" Binding="{Binding Path}"/>
+                <DataGridTextColumn x:DataType="models:CleaningEntryModel" Header="Files" Binding="{Binding Files}" />
+                <DataGridTextColumn x:DataType="models:CleaningEntryModel" Header="Folders" Binding="{Binding Folders}" />
+                <DataGridTextColumn x:DataType="models:CleaningEntryModel" Header="Total" Binding="{Binding Total}" />
+                <DataGridTextColumn x:DataType="models:CleaningEntryModel" Header="Status" Binding="{Binding Status}" />
             </DataGrid.Columns>
             
             <DataGrid.Styles>
@@ -43,10 +46,10 @@
         </DataGrid>
         
         <StackPanel Grid.Row="2" Grid.Column="3" VerticalAlignment="Bottom">
-            <Button Command="{Binding Scan}" IsEnabled="{Binding ScanButtonEnabled}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Button Command="{ReflectionBinding Scan}" IsEnabled="{Binding ScanButtonEnabled}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <Label VerticalAlignment="Center" HorizontalAlignment="Center">Scan</Label>
             </Button>
-            <Button Command="{Binding Delete}" IsEnabled="{Binding DeleteButtonEnabled}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Button Command="{ReflectionBinding Delete}" IsEnabled="{Binding DeleteButtonEnabled}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <Label VerticalAlignment="Center" HorizontalAlignment="Center">Delete</Label>
             </Button>
         </StackPanel>
