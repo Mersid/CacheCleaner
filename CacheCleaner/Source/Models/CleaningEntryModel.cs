@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using Avalonia.Media;
 
 namespace CacheCleaner.Models;
 
@@ -39,8 +40,12 @@ public class CleaningEntryModel : INotifyPropertyChanged
 		{
 			status = value;
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Status)));
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Brush)));
 		}
 	}
+
+	// public ISolidColorBrush Brush => Status == "Scanned" ? Brushes.Wheat : Brushes.Aquamarine;
+	public ISolidColorBrush Brush => Status == "Scanned" ? Brushes.Wheat : Brushes.Aquamarine;
 
 	public event PropertyChangedEventHandler? PropertyChanged;
 }

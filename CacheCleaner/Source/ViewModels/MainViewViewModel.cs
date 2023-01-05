@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Avalonia.Logging;
+using Avalonia.Media;
+using Avalonia.Threading;
 using CacheCleaner.Models;
 using ReactiveUI;
 
@@ -60,8 +62,8 @@ namespace CacheCleaner.ViewModels
 					Status = "Scanning"
 				};
 				Items.Add(entryModel);
-				
-				
+
+
 				tasks.Add(new Task(() =>
 				{
 					CleaningEntryFileEnumeration enumeration = FileDeleter.GetEntryFileEnumeration(cleaningEntry).Result;
