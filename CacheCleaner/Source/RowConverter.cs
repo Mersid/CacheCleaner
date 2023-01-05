@@ -12,7 +12,7 @@ public class RowConverter : IValueConverter
 	{
 		string? status = value as string;
 		
-		if (status is "Scanned")
+		if (status == "Scanned")
 		{
 			return Brushes.Wheat;
 		}
