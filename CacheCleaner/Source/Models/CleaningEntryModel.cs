@@ -45,7 +45,7 @@ public class CleaningEntryModel : INotifyPropertyChanged
 	}
 
 	// public ISolidColorBrush Brush => Status == "Scanned" ? Brushes.Wheat : Brushes.Aquamarine;
-	public ISolidColorBrush Brush => Status == "Scanned" ? Brushes.Wheat : Brushes.Aquamarine;
+	public ISolidColorBrush Brush => Status == "Scanned" ? Brushes.Wheat : Brushes.Transparent;
 
 	public event PropertyChangedEventHandler? PropertyChanged;
 }

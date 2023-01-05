@@ -10,12 +10,14 @@ public class RowConverter : IValueConverter
 {
 	public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
 	{
-		if (value is CleaningEntryModel { Status: "Scanned" })
+		string? status = value as string;
+		
+		if (status is "Scanned")
 		{
 			return Brushes.Wheat;
 		}
 		
-		return Brushes.Aquamarine;
+		return Brushes.Transparent;
 	}
 
 	public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)

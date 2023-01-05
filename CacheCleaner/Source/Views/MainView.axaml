@@ -17,13 +17,14 @@
     
     <UserControl.Styles>
         <Style Selector="DataGridRow">
-            <!-- <Setter Property="Background" Value="{Binding  Converter={StaticResource RowConverter}}" /> -->
+            <!-- <Setter Property="Background" Value="{Binding Status,  Converter={StaticResource RowConverter}}" /> -->
         </Style>
     </UserControl.Styles>
     
     <Grid ShowGridLines="False" ColumnDefinitions="*, *, *, *" RowDefinitions="*, *, *" Margin="0">
         <DataGrid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="4"
                   AutoGenerateColumns="false" CanUserReorderColumns="True" CanUserResizeColumns="True" CanUserSortColumns="True" IsReadOnly="True"
+                  LoadingRow="DataGrid_OnLoadingRow"
                   DataContext="{Binding Items}"
                   Items="{Binding}">
             <DataGrid.Columns>
@@ -35,75 +36,19 @@
             </DataGrid.Columns>
             
             <DataGrid.Styles>
-                <Style Selector="DataGridRow:pointerover /template/ DataGridCellsPresenter, DataGridRow:selected /template/ DataGridCellsPresenter">
-                    <Setter Property="Background" Value="LightGreen" />
-                </Style>
-                
-                <Style Selector="DataGridRow /template/ DataGridCellsPresenter">
-                    <Setter Property="Background" Value="{Binding Converter={StaticResource RowConverter}}" />
+                <Style Selector="DataGridRow">
+                    <Setter Property="Background" Value="{Binding Status,  Converter={StaticResource RowConverter}}" />
                 </Style>
             </DataGrid.Styles>
-            
-            
-            <!-- <DataGrid.RowBackground> -->
-            <!--     <SolidColorBrush Color="{Binding Brush}" /> -->
-            <!-- </DataGrid.RowBackground> -->
-            <!-- <DataGrid.AlternatingRowBackground> -->
-            <!--     <SolidColorBrush Color="{Binding Brush}" /> -->
-            <!-- </DataGrid.AlternatingRowBackground> -->
-            
-            <!-- <DataGrid.RowDetailsTemplate> -->
-            <!--     <DataTemplate> -->
-            <!--         <Border Background="Wheat"> -->
-            <!--             <TextBlock Text="{Binding Path}"/> -->
-            <!--         </Border> -->
-            <!--     </DataTemplate> -->
-            <!-- </DataGrid.RowDetailsTemplate> -->
-            
         </DataGrid>
         
-        <!-- <ListBox Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="4" Items="{Binding Items}"> -->
-        <!-- -->
-        <!--     <ListBox.ItemTemplate> -->
-        <!--         <DataTemplate> -->
-        <!--             <Border Background="{Binding Brush}"> -->
-        <!--                 <TextBlock Text="{Binding Path}"/> -->
-        <!--             </Border> -->
-        <!--         </DataTemplate> -->
-        <!--     </ListBox.ItemTemplate> -->
-        <!--      -->
-        <!--     <ListBox.Styles> -->
-        <!--         <Style Selector="ListBoxItem"> -->
-        <!--             <Setter Property="Background" Value="{Binding Items[n].Brush}" /> -->
-        <!--         </Style> -->
-        <!--     </ListBox.Styles> -->
-        <!-- </ListBox> -->
-        
         <StackPanel Grid.Row="2" Grid.Column="3" VerticalAlignment="Bottom">
-            <StackPanel.Styles>
-                <Style Selector="Button:pointerover">
-                    <Setter Property="Background" Value="Wheat" />
-                </Style>
-            </StackPanel.Styles>
-            
             <Button Command="{Binding Scan}" IsEnabled="{Binding ScanButtonEnabled}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <Label VerticalAlignment="Center" HorizontalAlignment="Center">Scan</Label>
             </Button>
             <Button Command="{Binding Delete}" IsEnabled="{Binding DeleteButtonEnabled}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <Label VerticalAlignment="Center" HorizontalAlignment="Center">Delete</Label>
             </Button>
-        </StackPanel>
-        
-        <StackPanel Grid.Row="2">
-            <StackPanel.Styles>
-                <!-- https://stackoverflow.com/questions/66442508/avaloniaui-styles-pseudoclasses -->
-                <Style Selector="Button:pointerover /template/ ContentPresenter">
-                    <Setter Property="Background" Value="Red"/>
-                </Style>
-            </StackPanel.Styles>
-            <Border>
-                <Button>I will have red background when hovered.</Button>
-            </Border>
         </StackPanel>
             
     </Grid>
